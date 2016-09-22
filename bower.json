@@ -1,0 +1,20 @@
+{
+    "name": "demo-components",
+    "authors": [
+        "WSE <tech@web-education.net>"
+    ],
+    "description": "",
+    "main": "",
+    "moduleType": [],
+    "license": "AGPL 3.0",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ],
+    "dependencies": {
+        "infra-components": "git://github.com/web-education/infra-components#dev"
+    }
+}

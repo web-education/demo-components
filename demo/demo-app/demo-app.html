@@ -1,0 +1,241 @@
+<h1>Infra-components</h1>
+
+<h2>Components</h2>
+
+<h3>Portal</h3>
+
+<div class="demo-card">
+    <ux-portal>
+        <div header-left>
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </div>
+        <div header-middle>
+            <span>Portal layout</span>
+        </div>
+        <div header-right>
+            <i class="fa fa-sign-out" aria-hidden="true"></i>
+            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+            <i class="fa fa-th-list" aria-hidden="true"></i>
+            <i class="fa fa-users" aria-hidden="true"></i>
+            <i class="fa fa-user" aria-hidden="true"></i>
+            <i class="fa fa-home" aria-hidden="true"></i>
+        </div>
+        <div section>
+            <hr/>
+            <em>Main section</em>
+            <hr/>
+        </div>
+        <div footer>
+            <hr/>
+            <em>Footer</em>
+            <hr/>
+        </div>
+    </ux-portal>
+</div>
+
+<h3>Side panel</h3>
+
+<div class="demo-card">
+    <button (click)="openside = true" #sidePanelOpener>Toggle side panel</button>
+    <side-panel [toggle]="openside" (onClose)="openside = false" [opener]="sidePanelOpener">
+        <div>Side panel contents.</div>
+    </side-panel>
+</div>
+
+<h3>Push panel</h3>
+
+<div class="demo-card">
+    <button (click)="openpush = true" #pushPanelOpener>Toggle push panel</button>
+    <push-panel [toggle]="openpush" (onClose)="openpush = false" [opener]="pushPanelOpener">
+        <div inside>
+        <div>Side panel contents.</div>
+        </div>
+        <div companion>
+            <hr/>
+            <div>
+                <em>Push panel companion.</em>
+            </div>
+            <hr/>
+        </div>
+    </push-panel>
+</div>
+
+<h3>Item tree</h3>
+
+<div class="demo-card">
+    <div>
+        {{ treeSelected ? "Selected item : " + treeSelected.name : "No item selected"}}
+    </div>
+    <hr/>
+    <input type="search" [(ngModel)]="treeFilter" placeholder="Search input (Flattens the tree)" />
+    <item-tree [items]="treeItems"
+        order="name"
+        display="name"
+        [flatten]="treeConfig.flatten"
+        [filter]="treeConfig.filter"
+        (onSelect)="treeSelected = $event"></item-tree>
+</div>
+
+<h3>Search input</h3>
+<div class="demo-card">
+    <div>
+        {{ searchInputSelected ? "Selected item : " + searchInputSelected.name : "No item selected" }}
+    </div>
+    <hr/>
+    <div>
+        <label>Delay :</label>
+        <input type="number" [(ngModel)]="delay" min="0" max="3000" step="100"/>
+    </div>
+    <div>
+        <label>Search :</label>
+        <search-input (onChange)="searchInputFilter = $event" [delay]="delay"
+            placeholder="Delayed search input"></search-input>
+    </div>
+    <ul>
+        <li *ngFor="let item of (treeItems | filter: { name: searchInputFilter })"
+            (click)="searchInputSelected = item">
+            {{item.name}}
+        </li>
+    </ul>
+</div>
+
+<h3>Multi-combo</h3>
+<div class="demo-card">
+    <div>
+        <label>Limit max. n° of selectable elements (0 is unlimited) :</label>
+        <input type="number" [(ngModel)]="multiComboConfig.maxSelected" min="0" [max]="treeItems.length" />
+    </div>
+    <div>
+        <label>Disabled :</label>
+        <input type="checkbox" [(ngModel)]="multiComboConfig.disabled" />
+    </div>
+    <multi-combo 
+        [comboModel]="treeItems"
+        [(selectedModel)]="selectedMulti"
+        title="Multi-combo"
+        display="name"
+        filter="name"
+        orderBy="name"
+        [disabled]="multiComboConfig.disabled"
+        [max]="multiComboConfig.maxSelected"></multi-combo>
+    <div class="select-blocks">
+        {{ !selectedMulti.length ? "No items selected" : "" }}
+        <button *ngFor="let item of selectedMulti" (click)="deselectMultiCombo(item)">{{item.name}}</button>
+    </div>
+</div>
+
+<h3>Light-box</h3>
+<div class="demo-card">
+    <button (click)="showLightbox = true">Open lightbox</button>
+    <light-box [show]="showLightbox" (onClose)="showLightbox = false">
+        <div>Light box contents.</div>
+        <a href="javascript:void(0)" (click)="showLightbox = false">Close</a>
+    </light-box>
+</div>
+
+<h2>Directives</h2>
+
+<h3>Tooltip</h3>
+<div class="demo-card">
+    <div>Set the tooltip position :</div>
+    <div style="margin: 10px">
+        <label>Left </label><input type="radio" name="ttpos" value="left" [(ngModel)]="tooltipPos"/>
+        <label>Right </label><input type="radio" name="ttpos" value="right" [(ngModel)]="tooltipPos"/>
+        <label>Top </label><input type="radio" name="ttpos" value="top" [(ngModel)]="tooltipPos"/>
+        <label>Bottom </label><input type="radio" name="ttpos" value="bottom" [(ngModel)]="tooltipPos"/>
+    </div>
+    <input type="text" [(ngModel)]="tooltipText"/>
+    <hr/>
+    <div style="text-align: center;">
+        <span [tooltip]="tooltipText" [position]="tooltipPos">This item has a tooltip</span>
+    </div>
+</div>
+
+<h3>Dynamic html injection</h3>
+<div class="demo-card">
+    <div>
+        <pre><code class="html hljs" contenteditable="true"
+            (focus)="highlight(codeArea)"
+            (blur)="highlight(codeArea); dynamicHtml = codeArea.textContent"
+            #codeArea>&lt;demo-app&gt;&lt;/demo-app&gt;</code></pre>
+        <button (click)="injectedHtml = dynamicHtml">Inject</button>
+        <button (click)="injectedHtml = undefined">Clear</button>
+        <hr/>
+        <dynamic-template [template]="injectedHtml" [context]="self"></dynamic-template>
+    </div>
+</div>
+
+<h2>Pipes</h2>
+
+<h3>Filter by</h3>
+<div class="demo-card">
+    <input type="search" [(ngModel)]="filterByInput" placeholder="Filter expression">
+    <ul>
+        <li *ngFor="let item of (treeItems | filter: { name: filterByInput })">
+            {{item.name}}
+        </li>
+    </ul>
+</div>
+
+<h3>Order by</h3>
+<div class="demo-card">
+    <table>
+        <thead>
+            <th><a href="javascript:void(0)" (click)="orderBy('name')">Name</a></th>
+            <th><a href="javascript:void(0)"  (click)="orderBy('color')">Color</a></th>
+            <th><a href="javascript:void(0)"  (click)="orderBy('pizzas')">Pizzas eaten</a></th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let turtle of (orderableItems | orderBy: orderByClause)">
+                <td>{{ turtle.name }}</td>
+                <td>{{ turtle.color }}</td>
+                <td>{{ turtle.pizzas }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<h3>Store</h3>
+<div class="demo-card">
+    <input type="search" [(ngModel)]="filterStoredInput" placeholder="Filter expression">
+    <div>
+        <ul>
+            <em>All elements</em>
+            <li *ngFor="let item of (treeItems | filter: { name: filterStoredInput } | store:self:'storedElements')">
+                {{item.name}}
+            </li>
+        </ul>
+        <ul>
+            <em>Stored elements (results of the filter pipe stored in a different variable)</em>
+            <li *ngFor="let item of storedElements">
+                {{item.name}}
+            </li>
+        </ul>
+    </div>
+</div>
+
+<h3>Flatten</h3>
+<div class="demo-card">
+    <ul>
+        <em>All elements</em>
+        <li *ngFor="let item of (treeItems | filter: { name: filterStoredInput } | store:self:'storedElements')">
+            <ul>
+                <li>{{ item.name }}</li>
+                <span *ngIf="item.children">Nested children :
+                    <ul>
+                        <li *ngFor="let child of allChildrenNames(item)">
+                            {{ child }}
+                        </li>
+                    </ul>
+                    <!-- {{ allChildrenNames(item) || 'None' }} -->
+                </span>
+            </ul>
+        </li>
+    </ul>
+    <ul>
+        <em>Flattened elements based on 'children' property</em>
+        <li *ngFor="let item of (treeItems | flattenObjArray: [ 'children' ])">
+            {{ item.name }}
+        </li>
+    </ul>
+</div>
