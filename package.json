@@ -7,29 +7,30 @@
     "tsc": "tsc -p demo",
     "tsc:w": "tsc -p demo -w",
     "typings": "typings",
-    "clean": "rm -R build; rm -R node_modules",
-    "postinstall": "bower && bower install"
+    "clean": "rm -R build; rm -R node_modules"
   },
   "license": "ISC",
   "dependencies": {
-    "@angular/common": "2.0.0",
-    "@angular/core": "2.0.0",
-    "@angular/forms": "2.0.0",
-    "@angular/platform-browser": "2.0.0",
-    "@angular/platform-browser-dynamic": "2.0.0",
-    "@angular/compiler": "2.0.0",
-    "@angular/upgrade": "2.0.0",
+    "@angular/common": "4.1.0",
+    "@angular/core": "4.1.0",
+    "@angular/forms": "4.1.0",
+    "@angular/platform-browser": "4.1.0",
+    "@angular/platform-browser-dynamic": "4.1.0",
+    "@angular/compiler": "4.1.0",
+    "@angular/upgrade": "4.1.0",
 
-    "core-js": "^2.4.1",
-    "reflect-metadata": "^0.1.3",
-    "rxjs": "5.0.0-beta.12",
+    "core-js": "2.4.1",
+    "reflect-metadata": "0.1.10",
+    "rxjs": "5.4.0",
     "systemjs": "0.19.27",
-    "zone.js": "^0.6.23"
+    "zone.js": "0.8.10",
+
+    "infra-components" : "1.0.1"
   },
   "devDependencies": {
-    "concurrently": "^2.2.0",
+    "concurrently": "3.0.0",
     "lite-server": "^2.2.2",
-    "typescript": "^2.0.2",
+    "typescript": "2.2.1",
     "typings":"^1.3.2"
   }
 }
