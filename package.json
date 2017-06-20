@@ -23,7 +23,7 @@
     "rxjs": "5.4.0",
     "systemjs": "0.19.27",
     "zone.js": "0.8.10",
-    "infra-components": "file:///../infra-components"
+    "infra-components": "../infra-components"
   },
   "devDependencies": {
     "concurrently": "3.0.0",
