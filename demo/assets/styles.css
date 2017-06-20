@@ -324,6 +324,28 @@ light-box div[content] {
     opacity: 0.95;
 }
 
+/** WIZARD **/
+
+wizard button {
+    background-color: rgb(0, 200, 248);
+    border: none;
+    outline: none;
+    box-shadow: 1px 1px 5px #444;
+    padding: 5px 10px;
+    color: white;
+    transition: all 0.25s;
+}
+wizard button:hover {
+    background-color: rgb(20, 225, 255);
+    color: #444;
+}
+wizard step {
+    min-height: 150px;
+}
+wizard nav.steps-nav-button {
+    padding: 10px;
+}
+
 /* * * * * * * */
 
 /** Demo cards **/

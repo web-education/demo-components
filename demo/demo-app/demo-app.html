@@ -133,6 +133,26 @@
     </light-box>
 </div>
 
+<h3>Wizard</h3>
+<div class="demo-card">
+    <div>
+        <wizard>
+            <step #step1 name="step 1" [isActived]="true" [class.active]="step1.isActived">
+                First step
+            </step>
+            <step #step2 name="step 2" [class.active]="step2.isActived">
+                Second step
+            </step>
+            <step #step3 name="step 3" [class.active]="step3.isActived">
+                Third step
+            </step>
+            <step #step4 name="step 4" [class.active]="step4.isActived">
+                Fourth step
+            </step>
+        </wizard>
+    </div>
+</div>
+
 <h2>Directives</h2>
 
 <h3>Tooltip</h3>
