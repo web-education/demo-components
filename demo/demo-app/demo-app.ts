@@ -5,7 +5,7 @@ import { orderableItems } from '../mock/orderable-items'
 
 @Component({
     selector: 'demo-app',
-    templateUrl: '/demo/demo-app/demo-app.html',
+    templateUrl: '/demo-components/demo/demo-app/demo-app.html',
 })
 export class DemoComponent {
 
