@@ -83,4 +83,10 @@ export class DemoComponent {
         recurse(item, false)
         return accu
     }
+
+    /* Wizard */
+    wizardAction:String;
+    logAction(s) {
+        this.wizardAction = s;
+    }
 }

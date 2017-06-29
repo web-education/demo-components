@@ -135,8 +135,16 @@
 
 <h3>Wizard</h3>
 <div class="demo-card">
+    <div style="margin: 10px">
+        Last action : <em>{{wizardAction}}</em>
+    </div>
     <div>
-        <wizard>
+        <wizard
+            (cancel)="logAction('cancel')"
+            (finish)="logAction('finish')"
+            (nextStep)="logAction('next step : ' + $event)"
+            (previousStep)="logAction('previous step : ' + $event)"
+        >
             <step #step1 name="step 1" [isActived]="true" [class.active]="step1.isActived">
                 First step
             </step>
