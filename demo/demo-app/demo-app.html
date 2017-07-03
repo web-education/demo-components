@@ -139,11 +139,11 @@
         Last action : <em>{{wizardAction}}</em>
     </div>
     <div>
-        <wizard
-            (cancel)="logAction('cancel')"
+        <wizard #wzd
+            (cancel)="logAction('cancel'); wzd.doCancel();"
             (finish)="logAction('finish')"
-            (nextStep)="logAction('next step : ' + $event)"
-            (previousStep)="logAction('previous step : ' + $event)"
+            (nextStep)="logAction('next step : ' + $event); wzd.doNextStep();"
+            (previousStep)="logAction('previous step : ' + $event); wzd.doPreviousStep();"
         >
             <step #step1 name="step 1" [isActived]="true" [class.active]="step1.isActived">
                 First step
