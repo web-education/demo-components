@@ -205,6 +205,19 @@
     </ul>
 </div>
 
+<h3>Deep Filter by</h3>
+<div class="demo-card">
+    <input type="search" [(ngModel)]="filterByColor" placeholder="Type a color">
+    <pre *ngFor="let item of (deepItemList | filter: { spec : { props : { color : filterByColor}}})">
+    name : {{item.name}}
+    spec : 
+        props :
+            size : {{item.spec.props.size}}
+            color :{{item.spec.props.color}} 
+        version : {{item.spec.version}}
+    </pre>
+</div>
+
 <h3>Order by</h3>
 <div class="demo-card">
     <table>

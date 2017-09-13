@@ -39,3 +39,40 @@ export let treeItems: Array<Object> = [
         ]
     }
 ]
+
+
+export let deepItemList: Array<Object> = [
+    {
+        name : 'First Element',
+        spec : {
+            props : {
+                size : '10',
+                weight : '10',
+                color : 'red' 
+            },
+            version : '1.4'
+        }
+    },
+    {
+        name : 'Second Element',
+        spec : {
+            props : {
+                size : '10',
+                weight : '20',
+                color : 'green' 
+            },
+            version : '1.4'
+        }
+    },
+    {
+        name : 'Third Element',
+        spec : {
+            props : {
+                size : '20',
+                weight : '10',
+                color : 'black' 
+            },
+            version : '1.4'
+        }
+    },
+]    

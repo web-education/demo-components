@@ -1,6 +1,6 @@
 import { Component, Input, ViewChild, ElementRef } from '@angular/core'
 
-import { treeItems } from '../mock/tree-items'
+import { treeItems, deepItemList } from '../mock/tree-items'
 import { orderableItems } from '../mock/orderable-items'
 
 @Component({
@@ -10,6 +10,7 @@ import { orderableItems } from '../mock/orderable-items'
 export class DemoComponent {
 
     treeItems = treeItems
+    deepItemList = deepItemList
 
     /* Side & push panels */
     @ViewChild("sidePanelOpener")
